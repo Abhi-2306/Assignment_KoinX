@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
 app.get("/", async (req, res) => {
-    res.send("Server is running");
+    res.send("Server is running \n add the following in the url \n /api/stats?coin=(bitcoin or ethereum or matic-network) to get latest stats \n /api/deviation?coin=(bitcoin or ethereum or matic-network) to get deviation stats");
 });
 cron.schedule("0 */2 * * *", async () => {
     await fetchAndSaveCryptoData();
