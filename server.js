@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const { getData } = require("./fetch_data");
 const cron = require('node-cron');
+const cryptoRoutes = require("./routes/cryptoRoutes");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const { fetchAndSaveCryptoData } = require("./controllers/cryptoController");
@@ -17,7 +18,7 @@ cron.schedule("0 */2 * * *", async () => {
     await fetchAndSaveCryptoData();
     console.log("Data fetched and saved");
 })
-
+app.use("/api", cryptoRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
