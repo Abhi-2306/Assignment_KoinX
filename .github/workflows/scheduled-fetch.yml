@@ -1,0 +1,21 @@
+name: Schedule Fetch Crypto Data
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # Runs every 2 hours
+
+jobs:
+  fetch_crypto_data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log Current Time
+        run: date -u  # Log the current UTC time
+
+      - name: Make POST request to fetch data
+        run: |
+          curl -X POST https://assignment-koinx-five.vercel.app/api/fetchData \
+          -H "Content-Type: application/json"
