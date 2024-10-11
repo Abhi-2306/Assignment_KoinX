@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 app.get("/", async (req, res) => {
     res.send("Server is running <br> Add the following in the URL:<br> /api/stats?coin=(bitcoin or ethereum or matic-network) to get latest stats<br> /api/deviation?coin=(bitcoin or ethereum or matic-network) to get deviation stats");
 });
-cron.schedule("0 */2 * * *", async () => {
+cron.schedule("*/1 * * * *", async () => {
     await fetchAndSaveCryptoData();
     console.log("Data fetched and saved");
 })
