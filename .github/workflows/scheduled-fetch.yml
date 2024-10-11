@@ -2,7 +2,7 @@ name: Schedule Fetch Crypto Data
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # Runs every 2 hours
+    - cron: '*/1 * * * *'  # Runs every 1 minute
   workflow_dispatch:  # Allows manual triggering
 
 
