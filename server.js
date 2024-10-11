@@ -15,8 +15,13 @@ app.get("/", async (req, res) => {
     res.send("Server is running <br> Add the following in the URL:<br> /api/stats?coin=(bitcoin or ethereum or matic-network) to get latest stats<br> /api/deviation?coin=(bitcoin or ethereum or matic-network) to get deviation stats");
 });
 cron.schedule("*/1 * * * *", async () => {
-    await fetchAndSaveCryptoData();
-    console.log("Data fetched and saved");
+    console.log("running a task every 2 hours ", new Date());
+    try {
+        await fetchAndSaveCryptoData();
+        console.log("Data fetched and saved");
+    } catch (error) {
+        console.log("Error in cron: ",error);
+    }
 })
 app.use("/api", cryptoRoutes);
 app.listen(PORT, () => {
