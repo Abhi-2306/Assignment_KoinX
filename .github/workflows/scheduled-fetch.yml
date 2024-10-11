@@ -2,7 +2,7 @@ name: Schedule Fetch Crypto Data
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # Runs every 2 hours
+    - cron: '*/1 * * * *'  # Runs every 2 hours
 
 jobs:
   fetch_crypto_data:
